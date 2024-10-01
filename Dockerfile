@@ -4,8 +4,8 @@ USER root
 # 作業ディレクトリの指定 WORKDIR命令は該当のディレクトリが存在しな場合、ディレクトリを作成する。
 # このディレクトリへのapp.pyファイルのコピーはバインドマウントで行うので、ここでは割愛
 
-RUN apt-get update
-RUN apt-get -y install locales && \
+RUN apt update
+RUN apt -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
@@ -13,7 +13,8 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
 
-RUN apt-get install -y vim less
+RUN apt install -y vim less
+RUN apt install -y binutils
 
 WORKDIR /usr/src/app
 
